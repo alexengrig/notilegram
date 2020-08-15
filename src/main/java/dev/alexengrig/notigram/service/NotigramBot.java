@@ -1,7 +1,7 @@
 package dev.alexengrig.notigram.service;
 
-import dev.alexengrig.notigram.configuration.NotigramProperties;
 import dev.alexengrig.notigram.exception.InternalException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -14,9 +14,10 @@ public class NotigramBot extends TelegramLongPollingBot implements RegisteredLon
     private final String token;
     private final String username;
 
-    public NotigramBot(NotigramProperties notigramProperties) {
-        this.token = notigramProperties.getBot().getToken();
-        this.username = notigramProperties.getBot().getUsername();
+    public NotigramBot(@Value("${NOTIGRAM_BOT_TOKEN}") String token,
+                       @Value("${NOTIGRAM_BOT_USERNAME}") String username) {
+        this.token = token;
+        this.username = username;
     }
 
     @Override
