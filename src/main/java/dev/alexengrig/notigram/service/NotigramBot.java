@@ -40,9 +40,14 @@ public class NotigramBot extends TelegramLongPollingBot implements RegisteredLon
         } else {
             return;
         }
-        if (message.hasText()) {
+        if (message.hasText() && isForMe(message)) {
             send(message.getChatId(), "Text: " + message.getText());
         }
+    }
+
+    private boolean isForMe(Message message) {
+        return message.hasEntities() && message.getEntities().stream()
+                .anyMatch(e -> e.getType().equals("mention") && e.getText().endsWith(username));
     }
 
     public void send(Long chatId, String text) {
