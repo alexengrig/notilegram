@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "notigram.bot.token",
+      "type": "java.lang.String",
+      "description": "Telegram bot token."
+    },
+    {
+      "name": "notigram.bot.username",
+      "type": "java.lang.String",
+      "description": "Telegram bot username."
+    }
+  ]
+}
