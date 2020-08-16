@@ -8,7 +8,7 @@ import org.telegram.telegrambots.meta.generics.LongPollingBot;
 
 public interface RegisteredLongPollingBot extends LongPollingBot {
     @Autowired
-    default void register(TelegramBotsApi telegramBotsApi) {
+    default void registerBot(TelegramBotsApi telegramBotsApi) {
         try {
             telegramBotsApi.registerBot(this);
         } catch (TelegramApiRequestException e) {
